@@ -3,7 +3,11 @@ const request = require("supertest");
 
 const app = require("../../app");
 
-const { parseTextFromHTML, seedItemToDatabase } = require("../test-utils");
+const {
+  parseTextFromHTML,
+  parseAttributeFromHTML,
+  seedItemToDatabase
+} = require("../test-utils");
 const {
   connectDatabaseAndDropData,
   diconnectDatabase
@@ -18,12 +22,17 @@ describe("Server path: /items/:id", () => {
   describe("GET", () => {
     it("renders the item `title` and `description`", async () => {
       //setup
-      const { _id, title, description } = await seedItemToDatabase();
+      const { _id, title, description, imageUrl } = await seedItemToDatabase();
       const response = await request(app).get("/items/" + _id);
+
       assert.equal(parseTextFromHTML(response.text, "#item-title"), title);
       assert.equal(
         parseTextFromHTML(response.text, "#item-description"),
         description
+      );
+      assert.equal(
+        parseAttributeFromHTML(response.text, ".single-item-img img", "src"),
+        imageUrl
       );
     });
   });
