@@ -1,6 +1,7 @@
 const { assert } = require("chai");
+const { buildItemObject } = require("../test-utils");
 
-describe("User visits root", () => {
+describe("When user visits root", () => {
   describe("without existing items", () => {
     it("starts blank", () => {
       browser.url("/");
@@ -17,6 +18,46 @@ describe("User visits root", () => {
 
       //verify
       assert.include(browser.getText("body"), "Create");
+    });
+  });
+  describe("and submits a new item", () => {
+    //setup: constants
+    const { title, description, imageUrl, _id } = buildItemObject();
+
+    beforeEach(() => {
+      // setup: create new item
+      browser.url("/items/create");
+      browser.setValue("#title-input", title);
+      browser.setValue("#description-input", description);
+      browser.setValue("#imageUrl-input", imageUrl);
+      browser.click("#submit-button");
+    });
+
+    it("displays the new item on the `root` page", () => {
+      // verify: container text includes item title
+      assert.include(browser.getText("#items-container"), title);
+    });
+
+    // the tests below could be moved to user-visits-root-test
+  });
+
+  describe("and clicks a button to delete an item", () => {
+    //setup: constants
+    const { title, description, imageUrl, _id } = buildItemObject();
+
+    beforeEach(() => {
+      // setup: create new item
+      browser.url("/items/create");
+      browser.setValue("#title-input", title);
+      browser.setValue("#description-input", description);
+      browser.setValue("#imageUrl-input", imageUrl);
+      browser.click("#submit-button");
+    });
+    it("is not displayed on the `root` page", () => {
+      //exercise: click the element to delete
+      browser.submitForm(".delete-form");
+      // verify
+      assert.notInclude(browser.getText("#items-container"), title);
     });
   });
 });

@@ -3,9 +3,9 @@ const { buildItemObject } = require("../test-utils");
 
 // Add your tests below:
 
-describe("user visits the create page", () => {
-  describe("user posts a new item", () => {
-    it("renders", () => {
+describe("When user visits the create page", () => {
+  describe("and submits a new item", () => {
+    it("is displayed on the `root` page", () => {
       //setup
       const { title, description, imageUrl } = buildItemObject();
       browser.url("/items/create");
