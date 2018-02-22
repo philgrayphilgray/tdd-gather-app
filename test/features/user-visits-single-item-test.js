@@ -36,6 +36,6 @@ describe("when user submits a new item", () => {
     browser.click(".item-card a");
 
     // verify
-    assert.include(browser.getText("body"), "item");
+    assert.include(browser.getText("#item-description"), description);
   });
 });
