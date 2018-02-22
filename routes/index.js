@@ -26,4 +26,9 @@ router.post("/items/create", async (req, res, next) => {
   }
 });
 
+router.get("/items/:itemId", async (req, res, next) => {
+  const selectedItem = await Item.findById({ _id: req.params.itemId });
+  res.render("single-item", { selectedItem });
+});
+
 module.exports = router;
