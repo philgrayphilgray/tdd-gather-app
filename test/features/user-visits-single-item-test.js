@@ -1,10 +1,11 @@
 const { assert } = require("chai");
 const { buildItemObject } = require("../test-utils");
 /*
- * Tests 
+ * Featue Tests
+ * These are optional/reduntant as the server level tests provide reasonable coverage.
  */
 
-describe("when user submits a new item", () => {
+describe.skip("when user submits a new item", () => {
   //setup: constants
   const { title, description, imageUrl } = buildItemObject();
 
