@@ -1,11 +1,10 @@
 const { assert } = require("chai");
 const { buildItemObject } = require("../test-utils");
 /*
- * Featue Tests
- * These are optional/reduntant as the server level tests provide reasonable coverage.
+ * Feature-level Tests
  */
 
-describe.skip("when user submits a new item", () => {
+describe("when user submits a new item", () => {
   //setup: constants
   const { title, description, imageUrl } = buildItemObject();
 
@@ -22,8 +21,11 @@ describe.skip("when user submits a new item", () => {
     // verify: container text includes item title
     assert.include(browser.getText("#items-container"), title);
   });
+  /**
+   *  These are optional/reduntant as the server level tests provide reasonable coverage.
+   */
 
-  describe("and clicks on the new item", () => {
+  describe.skip("and clicks on the new item", () => {
     beforeEach(() => {
       // exercise: click on item link
       browser.click(".item-card a");
