@@ -28,8 +28,20 @@ const parseTextFromHTML = (htmlAsString, selector) => {
   }
 };
 
+const parseAttributeFromHTML = (htmlAsString, selector, attribute) => {
+  const selectedElement = jsdom(htmlAsString).querySelector(selector);
+  if (selectedElement === null) {
+    throw new Error("No element with selector ${selector}.");
+  } else if (attribute === null) {
+    throw new Error("${attribute} is not a valid attribute.");
+  } else {
+    return selectedElement.getAttribute(`${attribute}`);
+  }
+};
+
 module.exports = {
   buildItemObject,
   seedItemToDatabase,
-  parseTextFromHTML
+  parseTextFromHTML,
+  parseAttributeFromHTML
 };
