@@ -20,7 +20,7 @@ describe("Server path: /items/:id", () => {
 
   // Write your test blocks below:
   describe("GET", () => {
-    it("renders the item `title` and `description`", async () => {
+    it("renders the item title, description, and image", async () => {
       //setup
       const { _id, title, description, imageUrl } = await seedItemToDatabase();
       const response = await request(app).get("/items/" + _id);
