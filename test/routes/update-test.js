@@ -29,7 +29,7 @@ describe("Server path: /items/:id/update", () => {
     const response = await request(app).get("/items/" + _id + "/update");
     assert.equal(parseValueFromHTML(response.text, "#title-input"), title);
     assert.equal(
-      parseValueFromHTML(response.text, "#description-input"),
+      parseTextFromHTML(response.text, "#description-input"),
       description
     );
     assert.equal(
