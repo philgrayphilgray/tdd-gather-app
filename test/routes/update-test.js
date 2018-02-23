@@ -6,7 +6,8 @@ const app = require("../../app");
 const {
   parseTextFromHTML,
   parseAttributeFromHTML,
-  seedItemToDatabase
+  seedItemToDatabase,
+  buildItemObject
 } = require("../test-utils");
 const {
   connectDatabaseAndDropData,
@@ -19,7 +20,7 @@ describe("Server path: /items/:id/update", () => {
 
   describe("GET", () => {
     it("renders the page", async () => {
-      const { _id, title, description, imageUrl } = seedItemToDatabase();
+      const { title, description, imageUrl, _id } = await seedItemToDatabase();
       const response = await request(app).get("/items/" + _id + "/update");
       assert.equal(response.status, 200);
     });
