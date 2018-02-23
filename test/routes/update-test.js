@@ -2,6 +2,7 @@ const { assert } = require("chai");
 const request = require("supertest");
 
 const app = require("../../app");
+const Item = require("../../models/item");
 
 const {
   parseTextFromHTML,
@@ -23,18 +24,35 @@ describe("Server path: /items/:id/update", () => {
       const response = await request(app).get("/items/" + _id + "/update");
       assert.equal(response.status, 200);
     });
+    it("renders the item `title`, `description`, and `imageUrl` as form field values", async () => {
+      const { title, description, imageUrl, _id } = await seedItemToDatabase();
+      const response = await request(app).get("/items/" + _id + "/update");
+      assert.equal(parseValueFromHTML(response.text, "#title-input"), title);
+      assert.equal(
+        parseTextFromHTML(response.text, "#description-input"),
+        description
+      );
+      assert.equal(
+        parseValueFromHTML(response.text, "#imageUrl-input"),
+        imageUrl
+      );
+    });
   });
-  it("renders the item `title`, `description`, and `imageUrl` as form field values", async () => {
-    const { title, description, imageUrl, _id } = await seedItemToDatabase();
-    const response = await request(app).get("/items/" + _id + "/update");
-    assert.equal(parseValueFromHTML(response.text, "#title-input"), title);
-    assert.equal(
-      parseTextFromHTML(response.text, "#description-input"),
-      description
-    );
-    assert.equal(
-      parseValueFromHTML(response.text, "#imageUrl-input"),
-      imageUrl
-    );
+  describe("POST", () => {
+    it("updates the record for the item in the database", async () => {
+      let { title, description, imageUrl, _id } = await seedItemToDatabase();
+      title = "New Title";
+      description = "New description";
+      const response = await request(app)
+        .post("/items/" + _id + "/update")
+        .type("form")
+        .send({ title, description, imageUrl });
+      const updatedItem = await Item.findOne({
+        title,
+        description,
+        imageUrl
+      });
+      assert.ok(updatedItem, "Item was not updated in the db");
+    });
   });
 });
