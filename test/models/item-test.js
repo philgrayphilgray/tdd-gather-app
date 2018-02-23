@@ -61,7 +61,7 @@ describe("Model: Item", () => {
       item.validateSync();
       assert.include(
         item.errors.imageUrl.message,
-        "Path `imageUrl` must be a valid image URL."
+        "Please provide a valid image URL."
       );
     });
   });

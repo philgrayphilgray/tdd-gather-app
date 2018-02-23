@@ -19,7 +19,7 @@ module.exports = mongoose.model(
         validator: function(v) {
           return /(https?:\/\/.*\.(?:png|jpg))/i.test(v);
         },
-        message: "Path `imageUrl` must be a valid image URL."
+        message: "Please provide a valid image URL."
       }
     }
   })
