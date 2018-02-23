@@ -7,7 +7,7 @@
         </div>
         <div class="create-column">
             <h2 class="form-title">Update item</h2>
-            <form class="input-form" action="/items/id/update" method="post">
+            <form class="input-form" action="/items/{{selectedItem._id}}/update" method="post">
                 <label class="form-label" for="title">Title</label>
                 <input id="title-input" name="title" maxlength="50" value="{{selectedItem.title}}" />
 
@@ -19,7 +19,7 @@
 
                 <div class="form-navigation">
                     <a href="/">
-                        <img class="back-arrow" src="img/back.svg" alt="back">
+                        <img class="back-arrow" src="/img/back.svg" alt="back">
                     </a>
                     <button class="button submit-button" id="submit-button" type="submit">
                         <p>Update</p>
