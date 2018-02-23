@@ -43,4 +43,25 @@ router.get("/items/:itemId/update", async (req, res, next) => {
   res.status(200).render("update", { selectedItem });
 });
 
+router.post("/items/:itemId/update", async (req, res, next) => {
+  const { title, description, imageUrl } = req.body;
+  const updatedItem = await Item.findByIdAndUpdate(req.params.itemId, {
+    title,
+    description,
+    imageUrl
+  });
+  updatedItem.validateSync();
+  if (updatedItem.errors) {
+    res.status(400).render("update", {
+      title,
+      description,
+      imageUrl
+    });
+  } else {
+    await updatedItem.save();
+    res.redirect("/");
+    res.status = 302;
+  }
+});
+
 module.exports = router;
