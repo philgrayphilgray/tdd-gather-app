@@ -27,7 +27,6 @@ describe("Server path: /items/:id/update", () => {
   it("renders the item `title`, `description`, and `imageUrl` as form field values", async () => {
     const { title, description, imageUrl, _id } = await seedItemToDatabase();
     const response = await request(app).get("/items/" + _id + "/update");
-    console.log(response.text);
     assert.equal(parseValueFromHTML(response.text, "#title-input"), title);
     assert.equal(
       parseValueFromHTML(response.text, "#description-input"),
