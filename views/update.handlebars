@@ -29,3 +29,10 @@
         </div>
     </div>
 </div>
+<script>
+    var img = document.getElementById('created-image');
+    function handleChange(e) {
+        img.src = e.target.value;
+    }
+    document.getElementById('imageUrl-input').oninput = handleChange;
+</script>
