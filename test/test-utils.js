@@ -28,6 +28,17 @@ const parseTextFromHTML = (htmlAsString, selector) => {
   }
 };
 
+const parseValueFromHTML = (htmlAsString, selector) => {
+  const selectedElement = jsdom(htmlAsString).querySelector(selector);
+  if (selectedElement !== null) {
+    return selectedElement.value;
+  } else {
+    throw new Error(
+      `No element with selector ${selector} found in HTML string`
+    );
+  }
+};
+
 const parseAttributeFromHTML = (htmlAsString, selector, attribute) => {
   const selectedElement = jsdom(htmlAsString).querySelector(selector);
   if (selectedElement === null) {
@@ -43,5 +54,6 @@ module.exports = {
   buildItemObject,
   seedItemToDatabase,
   parseTextFromHTML,
-  parseAttributeFromHTML
+  parseAttributeFromHTML,
+  parseValueFromHTML
 };
