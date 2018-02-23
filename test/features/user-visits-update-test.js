@@ -26,10 +26,11 @@ describe("When a user navigates to the update page", () => {
     });
   });
   describe("and changes the `title` and clicks the `Update` button", () => {
-    const newTitle = "New Fake Title";
-    browser.setValue("#title-input", newTitle);
-    browser.click(".submit-button");
-    it("displays the updated `title`");
-    assert.include(browser.getText("#items-container"), newTitle);
+    it("displays the updated `title` on the root page", () => {
+      const newTitle = "New Fake Title";
+      browser.setValue("#title-input", newTitle);
+      browser.click(".submit-button");
+      assert.include(browser.getText("body"), newTitle);
+    });
   });
 });
