@@ -1,7 +1,7 @@
 <div class="create-container">
     <div class="create-card">
         <div class="create-column">
-            <img id="created-image" src={{selectedItem.imageUrl}} alt="image to save">
+            <img id="created-image" src="{{selectedItem.imageUrl}}" alt="image to save">
         </div>
         <div class="divider">
         </div>
@@ -9,13 +9,13 @@
             <h2 class="form-title">Update item</h2>
             <form class="input-form" action="/items/id/update" method="post">
                 <label class="form-label" for="title">Title</label>
-                <input id="title-input" name="title" maxlength="50" value={{selectedItem.title}} />
+                <input id="title-input" name="title" maxlength="50" value="{{selectedItem.title}}" />
 
                 <label class="form-label" for="description">Description</label>
                 <textarea id="description-input" name="description">{{selectedItem.description}}</textarea>
 
                 <label class="form-label" for="imageUrl">Image Url</label>
-                <input id="imageUrl-input" name="imageUrl" oninput="handleChange" value={{selectedItem.imageUrl}} />
+                <input id="imageUrl-input" name="imageUrl" oninput="handleChange" value="{{selectedItem.imageUrl}}" />
 
                 <div class="form-navigation">
                     <a href="/">
