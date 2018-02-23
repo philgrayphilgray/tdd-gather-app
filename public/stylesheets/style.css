@@ -1,9 +1,9 @@
 :root {
-  --transition-time: .2s;
+  --transition-time: 0.2s;
 }
 
 body {
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
   margin: 0px;
   background-color: #efefef;
 }
@@ -79,7 +79,7 @@ a {
 
 .item-card:hover {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-  border: solid 1px rgba(0,0,0,0.4);
+  border: solid 1px rgba(0, 0, 0, 0.4);
   transition: var(--transition-time);
 }
 
@@ -98,7 +98,7 @@ a {
 }
 
 .image-overlay:hover {
-  background:rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   opacity: 1;
   transition: var(--transition-time);
 }
@@ -118,31 +118,59 @@ a {
 }
 
 @keyframes can-shake {
-  0%, 100% {transform: rotate(0deg); }
-  5% {transform: rotate(10deg); }
-  10% {transform: rotate(-10deg); }
-  15% {transform: rotate(8deg); }
-  20% {transform: rotate(-8deg); }
-  25% {transform: rotate(6deg); }
-  30% {transform: rotate(-6deg); }
-  35% {transform: rotate(4deg); }
-  40% {transform: rotate(-4deg); }
-  45% {transform: rotate(2deg); }
-  50% {transform: rotate(-2deg); }
-  55% {transform: rotate(0deg); }
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  5% {
+    transform: rotate(10deg);
+  }
+  10% {
+    transform: rotate(-10deg);
+  }
+  15% {
+    transform: rotate(8deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  25% {
+    transform: rotate(6deg);
+  }
+  30% {
+    transform: rotate(-6deg);
+  }
+  35% {
+    transform: rotate(4deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  45% {
+    transform: rotate(2deg);
+  }
+  50% {
+    transform: rotate(-2deg);
+  }
+  55% {
+    transform: rotate(0deg);
+  }
 }
 
 .delete-button img {
   transform: rotate(0deg);
 }
 
-.delete-button:hover img, #delete-button img:hover {
+.delete-button:hover img,
+#delete-button img:hover {
   opacity: 1;
-  animation: can-shake 1.8s linear .5s normal infinite;
+  animation: can-shake 1.8s linear 0.5s normal infinite;
 }
 
 @keyframes bounce {
-  0%, 50%, 100% {
+  0%,
+  50%,
+  100% {
     transform: translateY(0px);
   }
   20% {
@@ -158,11 +186,12 @@ a {
 }
 
 .view-button:hover img {
-  animation: bounce 1.8s ease-in-out .4s normal infinite;
+  animation: bounce 1.8s ease-in-out 0.4s normal infinite;
 }
 
 @media only screen and (max-width: 720px) {
-  .delete-button img, .view-button img {
+  .delete-button img,
+  .view-button img {
     width: 70%;
     height: 70%;
   }
@@ -246,13 +275,13 @@ a {
 }
 
 .create-button:hover img {
-  animation: spin 2s ease-in-out .5s normal infinite;
+  animation: spin 2s ease-in-out 0.5s normal infinite;
 }
 
 .single-item-card {
   width: 693px;
   max-height: 1109px;
-  background-color:#ffffff;
+  background-color: #ffffff;
   margin: 18px auto;
 }
 
@@ -315,7 +344,7 @@ a {
   font-weight: 600;
   width: 124px;
   height: 38px;
-  background-color: #4270EF;
+  background-color: #4270ef;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -377,8 +406,9 @@ a {
   color: #090924;
 }
 
-input, textarea {
-  font-family: 'Work Sans', sans-serif;
+input,
+textarea {
+  font-family: "Work Sans", sans-serif;
   font-size: 16px;
   font-weight: 500;
   background-color: #eeeeee;
@@ -443,7 +473,8 @@ input, textarea {
   0% {
     transform: scaleX(1) translateX(0px);
   }
-  50%, 100% {
+  50%,
+  100% {
     transform: scaleX(1.25) translateX(6px);
   }
 }
@@ -460,7 +491,7 @@ input, textarea {
     width: 90%;
   }
   .create-column {
-    width: 42%
+    width: 42%;
   }
   #created-image {
     width: 95%;
@@ -473,4 +504,10 @@ input, textarea {
 
 .button:hover {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+.error {
+  color: #a00;
+  font-weight: bold;
+  margin: 0.25em 0;
 }
