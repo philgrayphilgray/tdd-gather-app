@@ -24,4 +24,10 @@ describe("When a user visits a single item", () => {
     // verify: .single-item-img `src` is equal to new item `imageUrl`
     assert.equal(browser.getAttribute(".single-item-img img", "src"), imageUrl);
   });
+  describe("and clicks a link to update the item", () => {
+    it("redirects to an update page", () => {
+      browser.click(".update-button");
+      assert.include(browser.getText(".create-column"), "Update item");
+    });
+  });
 });
