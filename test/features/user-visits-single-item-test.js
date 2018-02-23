@@ -27,7 +27,7 @@ describe("When a user visits a single item", () => {
   describe("and clicks a link to update the item", () => {
     it("redirects to an update page", () => {
       browser.click(".update-button");
-      assert.include(browser.getText(".create-column"), "Update item");
+      assert.equal(browser.getText(".form-title"), "Update item");
     });
   });
 });
