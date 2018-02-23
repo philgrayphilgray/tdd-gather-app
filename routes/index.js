@@ -38,4 +38,9 @@ router.post("/items/:itemId/delete", async (req, res, next) => {
   res.status = 302;
 });
 
+router.get("/items/:itemId/update", async (req, res, next) => {
+  const selectedItem = await Item.findById({ _id: req.params.itemId });
+  res.status(200).render("update", { selectedItem });
+});
+
 module.exports = router;
