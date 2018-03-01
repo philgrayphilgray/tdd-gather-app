@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 module.exports = mongoose.model(
-  "Item",
+  'Item',
   // Define your model schema below:
   mongoose.Schema({
     title: {
@@ -19,7 +19,7 @@ module.exports = mongoose.model(
         validator: function(v) {
           return /(https?:\/\/.*\.(?:png|jpg))/i.test(v);
         },
-        message: "Please provide a valid image URL."
+        message: 'Please provide a valid image URL.'
       }
     }
   })

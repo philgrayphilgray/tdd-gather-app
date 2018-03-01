@@ -1,12 +1,12 @@
-const { jsdom } = require("jsdom");
+const { jsdom } = require('jsdom');
 
-const Item = require("../models/item");
+const Item = require('../models/item');
 
 // Create and return a sample Item object
 const buildItemObject = (options = {}) => {
-  const title = options.title || "My favorite item";
-  const imageUrl = options.imageUrl || "http://placebear.com/g/200/300.jpg"; //forced image extension
-  const description = options.description || "Just the best item";
+  const title = options.title || 'My favorite item';
+  const imageUrl = options.imageUrl || 'http://placebear.com/g/200/300.jpg'; //forced image extension
+  const description = options.description || 'Just the best item';
   return { title, imageUrl, description };
 };
 
@@ -42,9 +42,9 @@ const parseValueFromHTML = (htmlAsString, selector) => {
 const parseAttributeFromHTML = (htmlAsString, selector, attribute) => {
   const selectedElement = jsdom(htmlAsString).querySelector(selector);
   if (selectedElement === null) {
-    throw new Error("No element with selector ${selector}.");
+    throw new Error('No element with selector ${selector}.');
   } else if (attribute === null) {
-    throw new Error("${attribute} is not a valid attribute.");
+    throw new Error('${attribute} is not a valid attribute.');
   } else {
     return selectedElement.getAttribute(`${attribute}`);
   }

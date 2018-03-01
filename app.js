@@ -9,12 +9,12 @@ const index = require('./routes/index');
 const app = express();
 
 // View engine setup
-app.engine('handlebars', expressHandlebars({defaultLayout: 'app'}));
+app.engine('handlebars', expressHandlebars({ defaultLayout: 'app' }));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'handlebars');
 
 app.use(logger('dev'));
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);

@@ -1,22 +1,22 @@
 const app = require('./app');
 const port = process.env.PORT || require('./server.config').test.port;
-const {mongoose, databaseUrl, options} = require('./database');
+const { mongoose, databaseUrl, options } = require('./database');
 
 let expressServer;
 
 exports.config = {
-  specs: [
-    'test/features/*-test.js',
-  ],
+  specs: ['test/features/*-test.js'],
   coloredLogs: true,
   baseUrl: `http://localhost:${port}`,
   framework: 'mocha',
   reporters: ['spec'],
   maxInstances: 1,
   waitforTimeout: 10 * 1000,
-  capabilities: [{
-    browserName: 'phantomjs',
-  }],
+  capabilities: [
+    {
+      browserName: 'phantomjs'
+    }
+  ],
   services: ['phantomjs'],
   async beforeTest() {
     await mongoose.connect(databaseUrl, options);
@@ -26,5 +26,5 @@ exports.config = {
   async afterTest() {
     await mongoose.disconnect();
     expressServer.close();
-  },
+  }
 };
