@@ -18,7 +18,7 @@ router.post("/items/create", async (req, res, next) => {
   const newItem = new Item({ title, description, imageUrl });
   newItem.validateSync();
   if (newItem.errors) {
-    res.status(400).render("create", { newItem: newItem });
+    res.status(400).render("create", { newItem });
   } else {
     await newItem.save();
     res.redirect("/");
